@@ -64,7 +64,7 @@ public class Part2 {
             br.close();
             //TODO vytvorit metodu a volat ji pro ruzna zadani
 
-            //System.out.println((long) (61L*265L*82L*70L*34L));
+            System.out.println((long) (61L*265L*82L*70L*34L));
 
 
         } catch (IOException e) {
