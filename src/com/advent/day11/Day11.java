@@ -106,9 +106,6 @@ import java.io.FileReader;
 
 public class Day11 {
 
-    public static final int ROWS = 90;
-    public static final int COLUMNS = 93;
-
     public static void main(String[] args) {
 
         try {
