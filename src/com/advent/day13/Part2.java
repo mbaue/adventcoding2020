@@ -122,6 +122,7 @@ public class Part2 {
                 System.out.println("q = " + q);
                 x += (q * (bus.getInterval() - bus.getDelay()));
             }
+            System.out.println(x);
 
             long solution = x % modulo;
 
