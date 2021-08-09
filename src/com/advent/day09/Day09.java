@@ -96,7 +96,7 @@ public class Day09 {
                     List<Long> frame = new ArrayList<>(numbers.subList(0, 25));
                     if (!isSumOfPrevious(frame, numbers.get(25))) {
                         solution.add(numbers.get(25));
-                    };
+                    }
                     numbers.remove(0);
                     numbers.add(Long.decode(line));
                 }

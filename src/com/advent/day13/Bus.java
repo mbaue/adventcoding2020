@@ -13,16 +13,8 @@ public class Bus {
         return delay;
     }
 
-    public void setDelay(int delay) {
-        this.delay = delay;
-    }
-
     public int getInterval() {
         return interval;
-    }
-
-    public void setInterval(int interval) {
-        this.interval = interval;
     }
 
     @Override

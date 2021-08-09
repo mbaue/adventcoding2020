@@ -83,7 +83,7 @@ public class Day06 {
 
             while ((line = br.readLine()) != null) {
                 if (!line.isEmpty()) { // data
-                    sb = sb.append(line);
+                    sb.append(line);
                 } else { // prazdna radka - oddelovac skupiny/group
                     processGroup();
                 }

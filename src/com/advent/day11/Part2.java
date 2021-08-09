@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 
 /**
+ * --- Day 11: Seating System ---
  * --- Part Two ---
  * As soon as people start to arrive, you realize your mistake.
  * People don't just care about adjacent seats - they care about the first seat
