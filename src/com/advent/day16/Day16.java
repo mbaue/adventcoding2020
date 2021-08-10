@@ -3,7 +3,10 @@ package com.advent.day16;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * https://adventofcode.com/2020/day/16
@@ -69,6 +72,8 @@ import java.util.Arrays;
  * Adding together all of the invalid values produces your ticket scanning error rate: 4 + 55 + 12 = 71.
  *
  * Consider the validity of the nearby tickets you scanned. What is your ticket scanning error rate?
+ *
+ * Your puzzle answer was 19087.
  */
 
 public class Day16 {
@@ -79,15 +84,51 @@ public class Day16 {
             BufferedReader br = new BufferedReader(new FileReader(file));
             String line;
 
+//            Interval i = new Interval(25, 973);
+            List<Interval> intervals = new ArrayList<>();
+            boolean yourTicket = false;
+            boolean nearbyTickets = false;
+            int errNum = 0;
+            Pattern patternInterval = Pattern.compile("\\d+-\\d+");
 
-            int i = 0;
             while ((line = br.readLine()) != null) {
-                System.out.println(line);
+                Matcher matcherInterval = patternInterval.matcher(line);
 
-                i++;
+                if (!line.equals("")) {
+                    if (line.equals("your ticket:")) {
+                        yourTicket = true;
+                        //break;
+                    } else if (line.equals("nearby tickets:")) {
+                        nearbyTickets = true;
+                        //break;
+                    } else if (!yourTicket && !nearbyTickets) {
+                        System.out.println("interval     " + line);
+                        while (matcherInterval.find()) {
+                            String s = matcherInterval.group();
+                            String[] strinterv = s.split("\\-");
+                            Interval interval = new Interval(Integer.parseInt(strinterv[0]), Integer.parseInt(strinterv[1]));
+                            intervals.add(interval);
+                        }
+                    } else if (yourTicket && nearbyTickets){
+                        String[] numbers = line.split(",");
+                        for (String s : numbers) {
+                            int num = Integer.parseInt(s);
+                            boolean invalidNumber = true;
+                            for (Interval inter : intervals) {
+                                if (inter.contains(num)) {
+                                    invalidNumber = false;
+                                    break;
+                                }
+                            }
+                            if (invalidNumber) {
+                                errNum += num;
+                            }
+                        }
+                    }
+                }
             }
             System.out.println("-------------------SOLUTION-------------------------------------");
-//            System.out.println(ones * threes);
+            System.out.println("sum of false numbers = " + errNum);
             System.out.println("----------------------------------------------------------------");
 
             br.close();
@@ -95,6 +136,6 @@ public class Day16 {
             System.out.println(e.getMessage());
         }
 
-
     }
+
 }

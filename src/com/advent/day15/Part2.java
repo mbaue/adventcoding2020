@@ -24,6 +24,7 @@ import java.util.Map;
 public class Part2 {
 
     public static void main(String[] args) {
+        // TODO běží dlouho, najít nějakou fintu? https://davidlozzi.com/2020/12/15/advent-of-code-day-15/
 
         Map<Long, Long> map = new HashMap<>();
         // zadani
@@ -64,6 +65,5 @@ public class Part2 {
             actualNumber = nextNumber;
             actualTurn++;
         } while (actualTurn <= 30000000L);
-//175594
     }
 }
