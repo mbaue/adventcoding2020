@@ -83,8 +83,9 @@ public class Day16 {
             File file = new File("resources/adv16.txt");
             BufferedReader br = new BufferedReader(new FileReader(file));
             String line;
+            int lineNum = 0;
+            int invalidLinesCount = 0;
 
-//            Interval i = new Interval(25, 973);
             List<Interval> intervals = new ArrayList<>();
             boolean yourTicket = false;
             boolean nearbyTickets = false;
@@ -92,20 +93,19 @@ public class Day16 {
             Pattern patternInterval = Pattern.compile("\\d+-\\d+");
 
             while ((line = br.readLine()) != null) {
+                lineNum++;
                 Matcher matcherInterval = patternInterval.matcher(line);
 
                 if (!line.equals("")) {
                     if (line.equals("your ticket:")) {
                         yourTicket = true;
-                        //break;
                     } else if (line.equals("nearby tickets:")) {
                         nearbyTickets = true;
-                        //break;
                     } else if (!yourTicket && !nearbyTickets) {
                         System.out.println("interval     " + line);
                         while (matcherInterval.find()) {
                             String s = matcherInterval.group();
-                            String[] strinterv = s.split("\\-");
+                            String[] strinterv = s.split("-");
                             Interval interval = new Interval(Integer.parseInt(strinterv[0]), Integer.parseInt(strinterv[1]));
                             intervals.add(interval);
                         }
@@ -121,6 +121,8 @@ public class Day16 {
                                 }
                             }
                             if (invalidNumber) {
+                                System.out.println("invalid: line " + lineNum + ", num " + num);
+                                invalidLinesCount++;
                                 errNum += num;
                             }
                         }
@@ -129,6 +131,7 @@ public class Day16 {
             }
             System.out.println("-------------------SOLUTION-------------------------------------");
             System.out.println("sum of false numbers = " + errNum);
+            System.out.println("invalid lines = " + invalidLinesCount);
             System.out.println("----------------------------------------------------------------");
 
             br.close();

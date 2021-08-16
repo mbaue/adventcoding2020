@@ -10,15 +10,13 @@ public class Interval {
         this.upperLimit = upperLimit;
     }
 
-    public int getLowerLimit() {
-        return lowerLimit;
-    }
-
-    public int getUpperLimit() {
-        return upperLimit;
-    }
-
     public boolean contains(int number) {
         return number >= this.lowerLimit && number <= this.upperLimit;
     }
+
+    @Override
+    public java.lang.String toString() {
+        return lowerLimit + "-" + upperLimit;
+    }
+
 }
