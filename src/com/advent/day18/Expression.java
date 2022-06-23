@@ -3,7 +3,7 @@ package com.advent.day18;
 public class Expression {
 
     public String expression;
-    public int nextChar = 0;
+    public int nextChar;
 
     public Expression(String expression) {
         this.expression = expression;

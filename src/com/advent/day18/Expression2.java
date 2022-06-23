@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class Expression2 {
     public String expression;
-    public int nextChar = 0;
+    public int nextChar;
 
     public Expression2(String expression) {
         this.expression = expression;
@@ -13,7 +13,7 @@ public class Expression2 {
 
     public long processExpression() {
         char operator = 'x';
-        Stack<Long> st = new Stack();
+        Stack<Long> st = new Stack<>();
 
         while (nextChar < expression.length()) {
             char myChar = getNextChar();
